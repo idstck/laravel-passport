@@ -3,13 +3,30 @@
         <div class="card-header">Timeline</div>
 
         <div class="card-body">
-            <div class="media">
+            <div class="media mb-3" v-for="(tweet, index) in tweets" :key="index">
                 <img class="mr-3" src="https://placehold.it/64x64" alt="Generic placeholder image">
                 <div class="media-body">
-                    <h5 class="mt-0">Media heading</h5>
-                    Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+                    <h5 class="mt-0">{{ tweet.user.name }}</h5>
+                    {{ tweet.body }}
                 </div>
             </div>
         </div>
     </div>
 </template>
+
+<script>
+export default {
+    data () {
+        return {
+            tweets: []
+        }
+    },
+    mounted () {
+        axios.get('/tweets').then((response) => {
+            this.tweets = response.data;
+        }).catch((err) => {
+            console.log(err)
+        });
+    }
+}
+</script>
