@@ -3,6 +3,10 @@
         <div class="card-header">Timeline</div>
 
         <div class="card-body">
+            <post></post>
+
+            <hr>
+
             <div class="media mb-3" v-for="(tweet, index) in tweets" :key="index">
                 <img class="mr-3" src="https://placehold.it/64x64" alt="Generic placeholder image">
                 <div class="media-body">
@@ -15,11 +19,16 @@
 </template>
 
 <script>
+import Post from "./Post";
+
 export default {
     data () {
         return {
             tweets: []
         }
+    },
+    components: {
+        Post
     },
     mounted () {
         axios.get('/tweets').then((response) => {
