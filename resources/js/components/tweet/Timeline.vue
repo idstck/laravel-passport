@@ -3,7 +3,7 @@
         <div class="card-header">Timeline</div>
 
         <div class="card-body">
-            <post></post>
+            <post :tweets="tweets"></post>
 
             <hr>
 
