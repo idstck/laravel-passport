@@ -13,7 +13,7 @@ class TweetController extends Controller
 
     public function index(Request $request)
     {
-        $tweets = $request->user()->tweets()->with(['user'])->get();
+        $tweets = $request->user()->tweets()->with(['user'])->latestFirst()->get();
         return $tweets;
     }
 
