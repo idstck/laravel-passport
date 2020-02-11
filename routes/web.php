@@ -21,3 +21,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/tweets', 'TweetController@index');
 Route::post('/tweets', 'TweetController@store');
+
+Route::get('/developer', 'DeveloperController@index');
